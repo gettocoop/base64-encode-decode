@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import { Typography, Input } from "antd";
+import { Typography, Input, Layout, Button, Space } from "antd";
 import { useState } from "react";
 
 const { Title, Paragraph, Text, Link } = Typography;
@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [value, setValue] = useState("");
+  const [result, setResult] = useState("");
 
   return (
     <>
@@ -20,10 +21,50 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Typography.Title>Base64 Encode / Decode</Typography.Title>
+      <main
+        className="App"
+        style={{
+          height: "100vh",
+        }}
+      >
+        <Layout>
+          <Layout.Content>
+            <Typography.Title>Base64 Encode / Decode</Typography.Title>
 
-        <Input.TextArea placeholder="인코딩할 문자 입력"></Input.TextArea>
+            <Space
+              size="middle"
+              direction="vertical"
+              style={{
+                width: "75%",
+                height: "100vh",
+              }}
+            >
+              <Input.TextArea
+                placeholder="Encoding data"
+                value={value}
+                onChange={(event) => setValue(event.target.value)}
+              />
+
+              <Input.TextArea placeholder="Result" value={result} />
+
+              <Button
+                onClick={() => {
+                  setResult(btoa(value));
+                }}
+              >
+                Convert
+              </Button>
+
+              <Button
+                onClick={() => {
+                  navigator.clipboard.writeText(result);
+                }}
+              >
+                Copy to clipboard
+              </Button>
+            </Space>
+          </Layout.Content>
+        </Layout>
       </main>
     </>
   );
