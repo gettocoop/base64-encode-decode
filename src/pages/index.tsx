@@ -9,6 +9,14 @@ const { Title, Paragraph, Text, Link } = Typography;
 
 const inter = Inter({ subsets: ["latin"] });
 
+function encodeToBase64(text: string) {
+  const utf8Bytes = new TextEncoder().encode(text);
+
+  const base64Encoded = btoa(String.fromCharCode.apply(null, utf8Bytes));
+
+  return base64Encoded;
+}
+
 export default function Home() {
   const [value, setValue] = useState("");
   const [result, setResult] = useState("");
@@ -49,7 +57,7 @@ export default function Home() {
 
               <Button
                 onClick={() => {
-                  setResult(btoa(value));
+                  setResult(encodeToBase64(value));
                 }}
               >
                 Convert
