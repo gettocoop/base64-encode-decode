@@ -12,7 +12,9 @@ const inter = Inter({ subsets: ["latin"] });
 function encodeToBase64(text: string) {
   const utf8Bytes = new TextEncoder().encode(text);
 
-  const base64Encoded = btoa(String.fromCharCode.apply(null, utf8Bytes));
+  const base64Encoded = btoa(
+    String.fromCharCode.apply(null, Array.from(utf8Bytes))
+  );
 
   return base64Encoded;
 }
