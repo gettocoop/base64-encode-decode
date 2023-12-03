@@ -52,77 +52,111 @@ export default function Home() {
           height: "100vh",
         }}
       >
-        <Layout>
+        <Layout
+          style={{
+            height: "100%",
+            padding: 20,
+          }}
+        >
           <Layout.Content>
             <Typography.Title>Base64 Encode / Decode</Typography.Title>
-
-            <Space
-              size="middle"
-              direction="vertical"
+            <div
               style={{
-                width: "40%",
-                height: "100vh",
+                display: "flex",
               }}
             >
-              <Input.TextArea
-                placeholder="Encoding data"
-                value={encodeValue}
-                onChange={(event) => setEncodeValue(event.target.value)}
-              />
-
-              <Input.TextArea placeholder="Result" value={encodeResult} />
-
-              <Button
-                onClick={() => {
-                  setEncodeResult(encodeToBase64(encodeValue));
+              <Space
+                size="middle"
+                direction="vertical"
+                style={{
+                  width: "40%",
                 }}
               >
-                Convert
-              </Button>
+                <Input.TextArea
+                  placeholder="Encoding data"
+                  size="large"
+                  value={encodeValue}
+                  onChange={(event) => setEncodeValue(event.target.value)}
+                />
 
-              <Button
-                onClick={() => {
-                  navigator.clipboard.writeText(encodeResult);
+                <Input.TextArea
+                  size="large"
+                  placeholder="Result"
+                  value={encodeResult}
+                />
+
+                <div
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  <Button
+                    onClick={() => {
+                      setEncodeResult(encodeToBase64(encodeValue));
+                    }}
+                  >
+                    Convert
+                  </Button>
+
+                  <div style={{ width: 20 }} />
+
+                  <Button
+                    onClick={() => {
+                      navigator.clipboard.writeText(encodeResult);
+                    }}
+                  >
+                    Copy to clipboard
+                  </Button>
+                </div>
+              </Space>
+
+              <div style={{ width: 20 }} />
+
+              <Space
+                size="middle"
+                direction="vertical"
+                style={{
+                  width: "40%",
                 }}
               >
-                Copy to clipboard
-              </Button>
-            </Space>
+                <Input.TextArea
+                  placeholder="Decode data"
+                  size="large"
+                  value={decodeValue}
+                  onChange={(event) => setDecodeValue(event.target.value)}
+                />
 
-            {/* <div style={{ width: "10px" }}></div> */}
+                <Input.TextArea
+                  size="large"
+                  placeholder="Result"
+                  value={decodeResult}
+                />
 
-            <Space
-              size="middle"
-              direction="vertical"
-              style={{
-                width: "40%",
-                height: "100vh",
-              }}
-            >
-              <Input.TextArea
-                placeholder="Decode data"
-                value={decodeValue}
-                onChange={(event) => setDecodeValue(event.target.value)}
-              />
+                <div
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  <Button
+                    onClick={() => {
+                      setDecodeResult(decodeFromBase64(decodeValue));
+                    }}
+                  >
+                    Convert
+                  </Button>
 
-              <Input.TextArea placeholder="Result" value={decodeResult} />
+                  <div style={{ width: 20 }} />
 
-              <Button
-                onClick={() => {
-                  setDecodeResult(decodeFromBase64(decodeValue));
-                }}
-              >
-                Convert
-              </Button>
-
-              <Button
-                onClick={() => {
-                  navigator.clipboard.writeText(decodeResult);
-                }}
-              >
-                Copy to clipboard
-              </Button>
-            </Space>
+                  <Button
+                    onClick={() => {
+                      navigator.clipboard.writeText(decodeResult);
+                    }}
+                  >
+                    Copy to clipboard
+                  </Button>
+                </div>
+              </Space>
+            </div>
           </Layout.Content>
         </Layout>
       </main>
