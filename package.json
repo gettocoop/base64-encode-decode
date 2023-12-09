@@ -9,11 +9,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "predeploy": "rm -rf out && yarn build",
     "deploy": "gh-pages -d out",
     "start": "next start",
-    "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "lint": "next lint"
   },
   "dependencies": {
     "antd": "^5.11.5",
