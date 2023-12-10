@@ -20,15 +20,18 @@ function encodeToBase64(text: string) {
 }
 
 function decodeFromBase64(base64Encoded: string) {
-  const utf8Bytes = new Uint8Array(
-    atob(base64Encoded)
-      .split("")
-      .map((char) => char.charCodeAt(0))
-  );
+  try {
+    const utf8Bytes = new Uint8Array(
+      atob(base64Encoded)
+        .split("")
+        .map((char) => char.charCodeAt(0))
+    );
 
-  const decodedText = new TextDecoder().decode(utf8Bytes);
-
-  return decodedText;
+    const decodedText = new TextDecoder().decode(utf8Bytes);
+    return decodedText;
+  } catch (error) {
+    return "Invalid base64";
+  }
 }
 
 export default function Home() {
@@ -76,12 +79,15 @@ export default function Home() {
                   placeholder="Encoding data"
                   size="large"
                   value={encodeValue}
-                  onChange={(event) => setEncodeValue(event.target.value)}
+                  onChange={(event) => {
+                    setEncodeValue(event.target.value);
+                    setEncodeResult(encodeToBase64(event.target.value));
+                  }}
                 />
 
                 <Input.TextArea
                   size="large"
-                  placeholder="Result"
+                  placeholder="Write the letters and it will encode them for you"
                   value={encodeResult}
                 />
 
@@ -91,11 +97,13 @@ export default function Home() {
                   }}
                 >
                   <Button
-                    onClick={() => {
-                      setEncodeResult(encodeToBase64(encodeValue));
+                    onClick={async () => {
+                      const text = await navigator.clipboard.readText();
+                      setEncodeValue(text);
+                      setEncodeResult(encodeToBase64(text));
                     }}
                   >
-                    Convert
+                    Paste clipboard data
                   </Button>
 
                   <div style={{ width: 20 }} />
@@ -123,7 +131,10 @@ export default function Home() {
                   placeholder="Decode data"
                   size="large"
                   value={decodeValue}
-                  onChange={(event) => setDecodeValue(event.target.value)}
+                  onChange={(event) => {
+                    setDecodeValue(event.target.value);
+                    setDecodeResult(decodeFromBase64(event.target.value));
+                  }}
                 />
 
                 <Input.TextArea
@@ -138,11 +149,13 @@ export default function Home() {
                   }}
                 >
                   <Button
-                    onClick={() => {
-                      setDecodeResult(decodeFromBase64(decodeValue));
+                    onClick={async () => {
+                      const text = await navigator.clipboard.readText();
+                      setDecodeValue(text);
+                      setDecodeResult(decodeFromBase64(text));
                     }}
                   >
-                    Convert
+                    Paste clipboard data
                   </Button>
 
                   <div style={{ width: 20 }} />
