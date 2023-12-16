@@ -49,6 +49,13 @@ export default function Home() {
         <meta name="description" content="do base64 encode simple and fast" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main
+        className="App"
+        style={{
+          height: "100vh",
+        }}
+      >
         <div className="container">
           <Script src="https://www.googletagmanager.com/gtag/js?id=G-8VKH56H32Y" />
           <Script id="google-analytics">
@@ -61,13 +68,6 @@ export default function Home() {
         `}
           </Script>
         </div>
-      </Head>
-      <main
-        className="App"
-        style={{
-          height: "100vh",
-        }}
-      >
         <Layout
           style={{
             height: "100%",
