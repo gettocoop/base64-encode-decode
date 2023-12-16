@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { Typography, Input, Layout, Button, Space } from "antd";
 import { useState } from "react";
+import Script from "next/script";
 
 const { Title, Paragraph, Text, Link } = Typography;
 
@@ -48,6 +49,18 @@ export default function Home() {
         <meta name="description" content="do base64 encode simple and fast" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <div className="container">
+          <Script src="https://www.googletagmanager.com/gtag/js?id=G-8VKH56H32Y" />
+          <Script id="google-analytics">
+            {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-8VKH56H32Y');
+        `}
+          </Script>
+        </div>
       </Head>
       <main
         className="App"
