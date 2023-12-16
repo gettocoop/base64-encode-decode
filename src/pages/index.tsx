@@ -67,12 +67,6 @@ export default function Home() {
           gtag('config', 'G-8VKH56H32Y');
         `}
           </Script>
-          <Script id="google-adSense">
-            {`     
-            async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2984708726957940"
-            crossorigin="anonymous"
-          `}
-          </Script>
         </div>
         <Layout
           style={{
