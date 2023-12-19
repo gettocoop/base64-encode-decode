@@ -50,12 +50,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main
-        className="App"
-        style={{
-          height: "100vh",
-        }}
-      >
+      <main className="App">
         <div className="container">
           <Script src="https://www.googletagmanager.com/gtag/js?id=G-8VKH56H32Y" />
           <Script id="google-analytics">
@@ -184,6 +179,55 @@ export default function Home() {
               </Space>
             </div>
           </Layout.Content>
+          <div
+            style={{
+              height: 100,
+            }}
+          ></div>
+          <div>
+            <Typography.Title level={3}>What is Base64?</Typography.Title>
+            <Typography.Paragraph>
+              Base64 encoding, at its core, is a method to represent binary data
+              in a text-based format, offering a versatile solution for
+              scenarios where preserving the integrity of binary information is
+              crucial. The name "Base64" stems from the fact that it utilizes a
+              base of 64 characters to encode data. In this process, every three
+              bytes (24 bits) of binary data are converted into four ASCII
+              characters, allowing for a compact and easily readable
+              representation.
+            </Typography.Paragraph>
+            <Typography.Paragraph>
+              The character set employed in Base64 typically includes uppercase
+              letters (A-Z), lowercase letters (a-z), digits (0-9), and two
+              additional characters, often '+', and '/'. The '=' character
+              serves as padding when the binary data's bit count isn't a
+              multiple of 24, ensuring a consistent representation length.
+            </Typography.Paragraph>
+            <Typography.Paragraph>
+              To exemplify, consider encoding the string "Hello, World!" into
+              Base64:
+            </Typography.Paragraph>
+
+            <Typography.Paragraph>
+              Original string: Hello, World!
+            </Typography.Paragraph>
+            <Typography.Paragraph>
+              Base64 encoding: SGVsbG8sIFdvcmxkIQ==
+            </Typography.Paragraph>
+
+            <Typography.Paragraph>
+              Base64 is ubiquitous in applications such as email systems, where
+              it facilitates the safe transmission of file attachments, and web
+              development, where it's used for embedding data directly into web
+              pages. Additionally, it plays a vital role in authentication
+              mechanisms. Most programming languages provide built-in functions
+              or libraries for seamless Base64 encoding and decoding,
+              simplifying its integration into various software applications.
+              This versatility makes Base64 a cornerstone in ensuring the secure
+              and efficient exchange of binary data within text-based
+              communication contexts.
+            </Typography.Paragraph>
+          </div>
         </Layout>
       </main>
     </>
